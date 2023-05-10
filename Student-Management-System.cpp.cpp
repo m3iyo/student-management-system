@@ -1,10 +1,11 @@
 /*
-Program Title: A Simple C++ Grading System
+Program Title: A Simple C++ Student Management System
 
-Submitted by: Matthew Andrei Valencia and Lord Patrick Raizen Togonon
+Submitted by: Lord Patrick Raizen Togonon, John Paul Sapasap, Matthew Andrei Valencia, Gem Win Canete, Jed Andrew Del Rosario
 
-Program Description: The Program Takes in Inputs from both the teacher and student. For the Teacher, first the program takes in a username and password which can be edited directly on the password.txt file.
-For the Student function, the program takes in inputs like the University ID and a PIN given by the teacher (each student gets their own unique pin created by the Teacher/CLass Adviser)*/
+Program Description: The Program Takes in Inputs from both the admin and student. For the admin/teacher, first the program takes in a username and password which can be edited directly on the admin_credentials.txt file.
+For the Student function, the program takes in inputs like the University ID and a PIN given by the Admin/Teacher (each student gets their own unique pin created by the Admin/Teacer)
+*/
 
 #include <iostream>
 #include <conio.h>
