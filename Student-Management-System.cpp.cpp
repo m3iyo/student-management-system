@@ -164,28 +164,28 @@ class Profile
 		std::cout << "\t\t\t\t\t            REPORT CARD\n";
 		std::cout << "\t\t\t\t\t  -------------------------------\n";
 
-		std::cout << "\n\t\t\t\t\t          STUDENT PROFILE\n\n";
-		std::cout << "\t\t\t\t\tNAME: " << student_name << std::endl;
-		std::cout << "\t\t\t\t\tCOLLEGE DEPARTMENT: " << dept << std::endl;
-		std::cout << "\t\t\t\t\tCOURSE and SECTION: " << section << std::endl;
-		std::cout << "\t\t\t\t\tUNIVERSITY ID: " << uni_id << std::endl;
-		std::cout << "\t\t\t\t\tDATE OF BIRTH: " << dob << std::endl;
-		std::cout << "\t\t\t\t\tPHONE NUMBER: " << phone_number << std::endl;
-		std::cout << "\t\t\t\t\tMOTHER's NAME: " << mothers_name << std::endl;
-		std::cout << "\t\t\t\t\tFATHER's NAME: " << fathers_name << std::endl;
+		std::cout << "\n\t\t\t\t\t           STUDENT PROFILE\n\n";
+		std::cout << "\t\t\t\t\t  NAME: " << student_name << std::endl;
+		std::cout << "\t\t\t\t\t  COLLEGE DEPARTMENT: " << dept << std::endl;
+		std::cout << "\t\t\t\t\t  COURSE and SECTION: " << section << std::endl;
+		std::cout << "\t\t\t\t\t  UNIVERSITY ID: " << uni_id << std::endl;
+		std::cout << "\t\t\t\t\t  DATE OF BIRTH: " << dob << std::endl;
+		std::cout << "\t\t\t\t\t  PHONE NUMBER: " << phone_number << std::endl;
+		std::cout << "\t\t\t\t\t  MOTHER's NAME: " << mothers_name << std::endl;
+		std::cout << "\t\t\t\t\t  FATHER's NAME: " << fathers_name << std::endl;
 
 		std::cout << "\n\n\t\t\t\t\t  -------------------------------\n";
 		std::cout << "\t\t\t\t\t        ACADEMIC PERFORMANCE\n";
 		std::cout << "\t\t\t\t\t  -------------------------------\n";
 
-		std::cout << "\t\t\t\t\tSUBJECT                GRADES\n\n";
+		std::cout << "\t\t\t\t\t  SUBJECT                GRADES\n\n";
 
-		std::cout << "\t\t\t\t\tSS117\t\t\t" << grades[0] << std::endl;
-		std::cout << "\t\t\t\t\tENG110\t\t\t" << grades[1] << std::endl;
-		std::cout << "\t\t\t\t\tCC203\t\t\t" << grades[2] << std::endl;
-		std::cout << "\t\t\t\t\tCCS222\t\t\t" << grades[3] << std::endl;
-		std::cout << "\t\t\t\t\tCCS221\t\t\t" << grades[4] << std::endl;
-		std::cout << "\t\t\t\t\tCIT201\t\t\t" << grades[5] << std::endl;
+		std::cout << "\t\t\t\t\t  S117\t\t\t   " << grades[0] << std::endl;
+		std::cout << "\t\t\t\t\t  ENG110\t\t   " << grades[1] << std::endl;
+		std::cout << "\t\t\t\t\t  CC203\t\t\t   " << grades[2] << std::endl;
+		std::cout << "\t\t\t\t\t  CCS222\t\t   " << grades[3] << std::endl;
+		std::cout << "\t\t\t\t\t  CCS221\t\t   " << grades[4] << std::endl;
+		std::cout << "\t\t\t\t\t  CIT201\t\t   " << grades[5] << std::endl;
 	}
 
 	//DISPLAYS THE PROFILE OF A SPECIFIC STUDENT WHEN CALLED
