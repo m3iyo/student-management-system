@@ -241,15 +241,15 @@ void welcome()
 		for (int j = 1; j <= i; j++)
 		std::cout << (char)load2;
 
-		if (0.83333333333 * i >= 0 & i <= 22)
+		if (0.83333333333 * i >= 0 && i <= 22)
 		{
 			std::cout << "\n\t\t\t\t\t\tInitializing...";
 		}
-		if (0.83333333333 * i >= 20 & i <= 52)
+		if (0.83333333333 * i >= 20 && i <= 52)
 		{
 			std::cout << "\n\t\t\t\t\tRetrieving students data from database...";
 		}
-		if (0.83333333333 * i >= 50 & i <= 100)
+		if (0.83333333333 * i >= 50 && i <= 100)
 		{
 			std::cout << "\n\t\t\t\t\t\tStarting program...";
 		}
