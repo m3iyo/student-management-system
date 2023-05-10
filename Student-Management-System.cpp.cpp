@@ -13,6 +13,7 @@ For the Student function, the program takes in inputs like the University ID and
 #include <string>
 #include <process.h>
 #include <windows.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -231,24 +232,39 @@ void welcome()
 	SetConsoleCP(437);
 	SetConsoleOutputCP(437);
 	int load1 = 177, load2 = 219;
-	
-	
-	for (int i = 1; i <= 80; i++)
+
+	std::cout << std::setprecision(0) << std::fixed;
+	for (int i = 1; i <= 120; i++)
 	{
 		system("cls");
-		std::cout << "\n\n\n\n\n\n\n\n\n\n\t\t\t\tLOADING...." << 1.25 * i << "%\n";
+		std::cout << "\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\tLOADING...." << 0.83333333333 * i << "%\n";
 		for (int j = 1; j <= i; j++)
 		std::cout << (char)load2;
-		Sleep(10);
+
+		if (0.83333333333 * i > 1 & i <= 20)
+		{
+			std::cout << "\n\t\t\t\t\t\tInitializing...";
+		}
+		if (0.83333333333 * i > 20 & i <= 50)
+		{
+			std::cout << "\n\t\t\t\t\tRetrieving students data from database...";
+		}
+		if (0.83333333333 * i > 50 & i <= 100)
+		{
+			std::cout << "\n\t\t\t\t\t\tStarting program...";
+		}
+		Sleep(50);
 	}
 	system("COLOR 0f");
 	system("cls");
-    std::cout << "\n\n\n\n\n\n\n\t\t\t\tStudent Grading System";
-	std::cout << "\n\n\t\t\t\t\t by";
-	std::cout << "\n\n\t\t\t\t    Matthew Valencia";
-	std::cout << "\n\n\t\t\t\t\t and";
-	std::cout << "\n\n\t\t\t\t    Patrick Togonon";
-	std::cout << "\n\n\t\t\t\t       BSCS 1B\n\n\n";
+    std::cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t   Student Management System";
+	std::cout << "\n\n\t\t\t\t\t\t\t     by";
+	std::cout << "\n\n\t\t\t\t\t\t   Lord Patrick Togonon";
+	std::cout << "\n\n\t\t\t\t\t\t   Gem Win Cañete";
+	std::cout << "\n\n\t\t\t\t\t\t   Matthew Andrei Valencia";
+    std::cout << "\n\n\t\t\t\t\t\t   John Paul Sapasap";
+    std::cout << "\n\n\t\t\t\t\t\t   Jed Andrew Del Rosario";
+	std::cout << "\n\n\t\t\t\t\t\t\t   BSCS 1B";
     Sleep(4000);
     system("cls");
 }
