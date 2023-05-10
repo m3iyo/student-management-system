@@ -27,7 +27,7 @@ void del_info(); // A FUNCTION FOR THE TEACHER TO DELETE/REMOVE A STUDENT's RECO
 void ranking(); // A FUNCTION THAT DISPLAYS THE RANKING OF THE CLASS BY AVERAGE(GWA)
 void subject_ranking(); // A FUNCTION TO DISPLAY THE RANKING OF THE STUDENTS IN INDIVIDUAL SUBJECTS
 void leaderboards(); //DISPLAYS RANKING OF THE STUDENTS, BY AVERAGE OR IN INDI VIDUAL SUBJECTS
-void adviser(); //CLASSROOM ADVISER FUNCTION
+void admin(); //CLASSROOM ADVISER FUNCTION
 void student(); //STUDENT FUNCTION
 void adviser_login(); //PASSWORD FUNCTION FOR THE TEACHER TO LOGIN TO GAIN ADMINISTRATIVE ACCESS
 void main_menu(); //MAIN MENU
@@ -127,27 +127,27 @@ class Profile
 		std::cout << "\t\t\t\t\t           STUDENT'S GRADES\n";
 		std::cout << "\t\t\t\t\t  -------------------------------\n";
 
-		std::cout<<"\t\t\t\t       It Era(SS117)    : ";
+		std::cout<<"\t\t\t\t          It Era(SS117)  : ";
 		std::cin >> grades[0];
 		std::cin.ignore(20, '\n');
 
-		std::cout<<"\t\t\t\t       Purposive Communication(ENG110)    : ";
+		std::cout<<"\t\t\t\t          Purposive Communication(ENG110)  : ";
 		std::cin >> grades[1];
 		std::cin.ignore(20, '\n');
 
-		std::cout<<"\t\t\t\t       Computer Programming 2(CC203)    : ";
+		std::cout<<"\t\t\t\t          Computer Programming 2(CC203)  : ";
 		std::cin >> grades[2];
 		std::cin.ignore(20, '\n');
 
-		std::cout<<"\t\t\t\t       Visual Computing(CCS222)    : ";
+		std::cout<<"\t\t\t\t          Visual Computing(CCS222)  : ";
 		std::cin >> grades[3];
 		std::cin.ignore(20, '\n');
 
-		std::cout<<"\t\t\t\t       Web Development(CCS221)    : ";
+		std::cout<<"\t\t\t\t          Web Development(CCS221)  : ";
 		std::cin >> grades[4];
 		std::cin.ignore(20, '\n');
 
-		std::cout<<"\t\t\t\t       Discrete(CIT201)    : ";
+		std::cout<<"\t\t\t\t          Discrete(CIT201)  : ";
 		std::cin >> grades[5];
 		std::cin.ignore(20, '\n');
 
@@ -576,7 +576,7 @@ void leaderboards()
 	}
 }
 
-void adviser()
+void admin()
 {
 	int choice;
     start:
@@ -668,7 +668,7 @@ void student()
 	goto start;
 }
 
-void adviser_login()
+void admin_login()
 {
 	system("cls");
 	char password[7];
@@ -763,7 +763,7 @@ void adviser_login()
     	cout<<"\n\n\t\t\t\t\t\tACCESS GRANTED"<< endl;
     	system("pause");
     	system("cls");
-		adviser();
+		admin();
 	}
 	else
 	{
@@ -791,15 +791,15 @@ void main_menu()
 	start:
 	std::cout << "\t\t\t\t   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n";
 	std::cout << "\t\t\t\t |                                              |\n";
-	std::cout << "\t\t\t\t|             Student Grading System           |\n";
+	std::cout << "\t\t\t\t|              Student Management System         |\n";
 	std::cout << "\t\t\t\t |                                              |\n";
-	std::cout << "\t\t\t\t|                   Main Menu                  |\n";
+	std::cout << "\t\t\t\t|                    Main Menu                   |\n";
 	std::cout << "\t\t\t\t |                                              |\n";
-	std::cout << "\t\t\t\t|                 1. Teacher                   |\n";
+	std::cout << "\t\t\t\t|                  1. Teacher                    |\n";
 	std::cout << "\t\t\t\t |                                              |\n";
-	std::cout << "\t\t\t\t|                 2. Student                   |\n";
+	std::cout << "\t\t\t\t|                  2. Student                    |\n";
 	std::cout << "\t\t\t\t |                                              |\n";
-	std::cout << "\t\t\t\t|                 3. Exit                      |\n";
+	std::cout << "\t\t\t\t|                  3. Exit                       |\n";
 	std::cout << "\t\t\t\t | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|";
 	std::cout << "\n\n\t\t\t\t\t" << "Choose an option, then press <Enter>: ";
 	std::cin >> choice;
@@ -807,7 +807,7 @@ void main_menu()
 	switch (choice)
     {
     	case 1:
-    		adviser_login();
+    		admin_login();
     		break;
 
     	case 2:
