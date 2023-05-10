@@ -260,7 +260,7 @@ void welcome()
     std::cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t   Student Management System";
 	std::cout << "\n\n\t\t\t\t\t\t\t     by";
 	std::cout << "\n\n\t\t\t\t\t\t   Lord Patrick Togonon";
-	std::cout << "\n\n\t\t\t\t\t\t   Gem Win Cañete";
+	std::cout << "\n\n\t\t\t\t\t\t   Gem Win Canete";
 	std::cout << "\n\n\t\t\t\t\t\t   Matthew Andrei Valencia";
     std::cout << "\n\n\t\t\t\t\t\t   John Paul Sapasap";
     std::cout << "\n\n\t\t\t\t\t\t   Jed Andrew Del Rosario";
