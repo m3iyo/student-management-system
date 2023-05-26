@@ -36,25 +36,25 @@ void welcome()
 	SetConsoleOutputCP(437);
 	int load1 = 177, load2 = 219;
 
-	cout << std::setprecision(0) << std::fixed;
+	std::cout << std::setprecision(0) << std::fixed;
 	for (int i = 1; i <= 120; i++)
 	{
 		system("cls");
-		cout << "\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\tLOADING...." << 0.83333333333 * i << "%\n";
+		std::cout << "\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\tLOADING...." << 0.83333333333 * i << "%\n";
 		for (int j = 1; j <= i; j++)
-		cout << (char)load2;
+		std::cout << (char)load2;
 
 		if (0.83333333333 * i >= 1 & i <= 20)
 		{
-			cout << "\n\t\t\t\t\t\tInitializing...";
+			std::cout << "\n\t\t\t\t\t\tInitializing...";
 		}
 		if (0.83333333333 * i >= 20 & i <= 50)
 		{
-			cout << "\n\t\t\t\t\tRetrieving students data from database...";
+			std::cout << "\n\t\t\t\t\tRetrieving students data from database...";
 		}
 		if (0.83333333333 * i >= 50 & i <= 100)
 		{
-			cout << "\n\t\t\t\t\t\tStarting program...";
+			std::cout << "\n\t\t\t\t\t\tStarting program...";
 		}
 		Sleep(50);
 	}
@@ -63,14 +63,14 @@ void welcome()
     SetConsoleOutputCP(1252);
 	system("COLOR 0f");
 	system("cls");
-    cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t   Student Management System";
-	cout << "\n\n\t\t\t\t\t\t\t     by";
-	cout << "\n\n\t\t\t\t\t\t   Lord Patrick Togonon";
-	cout << "\n\n\t\t\t\t\t\t   Gem Win Cañete";
-	cout << "\n\n\t\t\t\t\t\t   Matthew Andrei Valencia";
-    cout << "\n\n\t\t\t\t\t\t   John Paul Sapasap";
-    cout << "\n\n\t\t\t\t\t\t   Jed Andrew Del Rosario";
-	cout << "\n\n\t\t\t\t\t\t\t   BSCS 1B";
+    std::cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t   Student Management System";
+	std::cout << "\n\n\t\t\t\t\t\t\t     by";
+	std::cout << "\n\n\t\t\t\t\t\t   Lord Patrick Togonon";
+	std::cout << "\n\n\t\t\t\t\t\t   Gem Win Cañete";
+	std::cout << "\n\n\t\t\t\t\t\t   Matthew Andrei Valencia";
+    std::cout << "\n\n\t\t\t\t\t\t   John Paul Sapasap";
+    std::cout << "\n\n\t\t\t\t\t\t   Jed Andrew Del Rosario";
+	std::cout << "\n\n\t\t\t\t\t\t\t   BSCS 1B";
     Sleep(5000);
     system("cls");
 }
@@ -93,17 +93,17 @@ void del_info()
 	int id;
 	if (!open1)
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 	}
 	else
 	{
-		cout<<"\n\n\n\n\n\t\t\t\t\tENTER THE STUDENT'S UNIVERSITY ID: ";
-		cin >> id;
+		std::cout<<"\n\n\n\n\n\t\t\t\t\tENTER THE STUDENT'S UNIVERSITY ID: ";
+		std::cin >> id;
 		system("cls");
 		while(open1.read((char*)&a,sizeof(a)))
 		{
 
-			if (id != a.uni_id)
+			if (id == a.uni_id)
 			{
 				create1.write((char*)&a, sizeof(a));
             	count = 1;
@@ -111,17 +111,21 @@ void del_info()
 		}
 		if (count == 0)
 		{
-			cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t ERROR ! ! ! RECORD DOES NOT EXIST !\n\n\n\n\n\n\n\n\n\n";
+			std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t ERROR ! ! ! RECORD DOES NOT EXIST !\n\n\n\n\n\n\n\n\n\n";
 		}
 		else
 		{
-			cout<<"\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t     THE RECORD HAS BEEN DELETED SUCCESSFULLY\n\n\n\n\n\n\n\n";
+			std::cout<<"\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t     THE RECORD HAS BEEN DELETED SUCCESSFULLY\n\n\n\n\n\n\n\n";
 		}
+		if (open1.fail())
+		{
+			return;
+		}
+		open1.close();
+		create1.close();
+		remove("Record.txt");
+		rename("Temp.txt", "Record.txt");
 	}
-	open1.close();
-	create1.close();
-	remove("Record.txt");
-	rename("Temp.txt", "Record.txt");
 }
 
 void update_info()
@@ -133,19 +137,19 @@ void update_info()
 	int id;
 	if (!open1)
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 	}
 	else
 	{
-        cout<<"\n\n\n\n\n\t\t\t\t\tENTER THE STUDENT's UNIVERSITY ID: ";
-		cin >> id;
-		cin.ignore(20, '\n');
+        std::cout<<"\n\n\n\n\n\t\t\t\t\tENTER THE STUDENT's UNIVERSITY ID: ";
+		std::cin >> id;
+		std::cin.ignore(20, '\n');
 		system("cls");
 		while(open1.read((char*)&a,sizeof(a)))
 		{
 			if (id == a.uni_id)
 			{
-				cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t     INPUT THE NEW/UPDATED INFO OF THE STUDENT";
+				std::cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t     INPUT THE NEW/UPDATED INFO OF THE STUDENT";
 				Sleep(1500);
 				system("cls");
 				a.profile();
@@ -159,7 +163,7 @@ void update_info()
 		}
 		if (count == 0)
 		{
-			cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t ERROR ! ! ! RECORD DOES NOT EXIST !\n\n\n\n\n\n\n\n\n\n";
+			std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t ERROR ! ! ! RECORD DOES NOT EXIST !\n\n\n\n\n\n\n\n\n\n";
 		}
 	}
 	open1.close();
@@ -176,12 +180,12 @@ void find_student()
 	int id;
 	if (!open1)
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 	}
 	else
 	{
-		cout<<"\n\n\n\n\n\t\t\t\tENTER THE STUDENT's UNIVERSITY ID: ";
-		cin >> id;
+		std::cout<<"\n\n\n\n\n\t\t\t\tENTER THE STUDENT's UNIVERSITY ID: ";
+		std::cin >> id;
 		system("cls");
 		while(open1.read((char*)&a,sizeof(a)))
 		{
@@ -193,7 +197,7 @@ void find_student()
 		}
 		if (count == 0)
 		{
-			cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t ERROR ! ! ! RECORD DOES NOT EXIST !\n\n\n\n\n\n\n\n\n\n";
+			std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t ERROR ! ! ! RECORD DOES NOT EXIST !\n\n\n\n\n\n\n\n\n\n";
 		}
 	}
 	system("pause");
@@ -209,16 +213,16 @@ void my_profile()
 	char pass[20];
 	if (!open)
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 	}
 	else
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\tENTER YOUR UNIVERSITY ID: ";
-		cin >> id;
-		cin.ignore(20, '\n');
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\tENTER YOUR UNIVERSITY ID: ";
+		std::cin >> id;
+		std::cin.ignore(20, '\n');
 
-		cout<<"\n\n\t\t\t\tENTER YOUR PIN: ";
-		cin.getline(pass, 20);
+		std::cout<<"\n\n\t\t\t\tENTER YOUR PIN: ";
+		std::cin.getline(pass, 20);
 		system("cls");
 		while (open.read((char*)&a,sizeof(a)))
 		{
@@ -230,7 +234,7 @@ void my_profile()
 		}
 		if (count == 0)
 		{
-			cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+			std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 		}
 	}
 	system("pause");
@@ -245,7 +249,7 @@ void ranking()
 
 	if (!open)
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 	}
 	else
 	{
@@ -270,14 +274,14 @@ void ranking()
 				}
 			}
 		}
-		cout << "\n\n\t\t\t\t\t  -------------------------------\n";
-        cout << "\t\t\t\t\t       CLASS RECORD(HI - LO)\n";
-        cout << "\t\t\t\t\t  -------------------------------\n";
+		std::cout << "\n\n\t\t\t\t\t  -------------------------------\n";
+        std::cout << "\t\t\t\t\t       CLASS RECORD(HI - LO)\n";
+        std::cout << "\t\t\t\t\t  -------------------------------\n";
 
 		for (int i = 0; i < n; i++)	
 		{
 			b[i].disp_student_profiles();
-			cout << "\n\n\n\n\n\n\t\t\t\t\t  -------------------------------\n\n";
+			std::cout << "\n\n\n\n\n\n\t\t\t\t\t  -------------------------------\n\n";
 		}
 		getch();
 		system("pause");
@@ -293,7 +297,7 @@ void subject_ranking()
 
 	if (!open)
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 	}
 	else
 	{
@@ -305,24 +309,24 @@ void subject_ranking()
 		}
 		open.close();
 
-    	cout<<"\n\n\n\n\n\n\t\t\t\t\t  ------------------------"<<"\n";
-        cout<<"\t\t\t\t\t     CHOOSE A SUBJECT"<<"\n";
-        cout<<"\t\t\t\t\t  ------------------------"<<"\n";
-        cout<<"\t\t\t\t\t\t  1. STAT203"<<"\n";
-        cout<<"\t\t\t\t\t\t  2. CCS221"<<"\n";
-        cout<<"\t\t\t\t\t\t  3. CCS222"<<"\n";
-        cout<<"\t\t\t\t\t\t  4. CC203"<<"\n";
-        cout<<"\t\t\t\t\t\t  5. SS117"<<"\n";
-        cout<<"\t\t\t\t\t\t  6. ENG110"<<"\n\n";
-        cout<<"\t\t\t\t\t     ENTER YOUR CHOICE: ";
-    	cin >> choice;
-    	cin.ignore(1000, '\n');
+    	std::cout<<"\n\n\n\n\n\n\t\t\t\t\t  ------------------------"<<"\n";
+        std::cout<<"\t\t\t\t\t     CHOOSE A SUBJECT"<<"\n";
+        std::cout<<"\t\t\t\t\t  ------------------------"<<"\n";
+        std::cout<<"\t\t\t\t\t\t  1. STAT203"<<"\n";
+        std::cout<<"\t\t\t\t\t\t  2. CCS221"<<"\n";
+        std::cout<<"\t\t\t\t\t\t  3. CCS222"<<"\n";
+        std::cout<<"\t\t\t\t\t\t  4. CC203"<<"\n";
+        std::cout<<"\t\t\t\t\t\t  5. SS117"<<"\n";
+        std::cout<<"\t\t\t\t\t\t  6. ENG110"<<"\n\n";
+        std::cout<<"\t\t\t\t\t     ENTER YOUR CHOICE: ";
+    	std::cin >> choice;
+    	std::cin.ignore(1000, '\n');
     	system("cls");
-    	cout << "\n";
+    	std::cout << "\n";
 
     	if (choice > 6)
     	{
-    		cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
+    		std::cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
 		}
 		else
 		count = choice - 1;
@@ -340,17 +344,17 @@ void subject_ranking()
             }
     	}
 
-    	cout<<"\n\n\n\n\n\n";
-        cout<<""<<"------------------------------------------------------------------------------------------------------------------------";
-        cout<<""<<"\t\tRANK" << "\t\t\t\tNAME"<<"\t\t\t\t\tGRADES"<<"\n";
-        cout<<""<<"------------------------------------------------------------------------------------------------------------------------"<<"\n";
+    	std::cout<<"\n\n\n\n\n\n";
+        std::cout<<""<<"------------------------------------------------------------------------------------------------------------------------";
+        std::cout<<""<<"\t\tRANK" << "\t\t\t\tNAME"<<"\t\t\t\t\tGRADES"<<"\n";
+        std::cout<<""<<"------------------------------------------------------------------------------------------------------------------------"<<"\n";
         for(int i = 0;i < 5;++i)
         {
-            cout<<"\t "<< i + 1 <<"\t\t" << b[i].student_name <<"\t\t\t  " << b[i].grades[count];
-            cout<<endl;
+            std::cout<<"\t "<< i + 1 <<"\t\t" << b[i].student_name <<"\t\t\t  " << b[i].grades[count];
+            std::cout<<endl;
         }
-        cout<<""<<"------------------------------------------------------------------------------------------------------------------------";
-        cout<<"\n\n\n";
+        std::cout<<""<<"------------------------------------------------------------------------------------------------------------------------";
+        std::cout<<"\n\n\n";
         system("pause");
     }
 }
@@ -358,14 +362,14 @@ void subject_ranking()
 void leaderboards()
 {
 	int choice;
-	cout<<"\n\n\n\n\n\n\t\t\t\t\t     ------------------------"<<"\n";
-  	cout<<"\t\t\t\t\t            LEADERBOARDS"<<"\n";
-    cout<<"\t\t\t\t\t     ------------------------"<<"\n\n";
-    cout<<"\t\t\t\t\t  1. VIEW RANKING BY GWA"<<"\n";
-	cout<<"\t\t\t\t\t  2. VIEW RANKING PER SUBJECT"<<"\n";
-	cout<<"\n\n\t\t\t\t\t            CHOICE: ";
-    cin >> choice;
-    cin.ignore (20, '\n');
+	std::cout<<"\n\n\n\n\n\n\t\t\t\t\t     ------------------------"<<"\n";
+  	std::cout<<"\t\t\t\t\t            LEADERBOARDS"<<"\n";
+    std::cout<<"\t\t\t\t\t     ------------------------"<<"\n\n";
+    std::cout<<"\t\t\t\t\t  1. VIEW RANKING BY GWA"<<"\n";
+	std::cout<<"\t\t\t\t\t  2. VIEW RANKING PER SUBJECT"<<"\n";
+	std::cout<<"\n\n\t\t\t\t\t            CHOICE: ";
+    std::cin >> choice;
+    std::cin.ignore (20, '\n');
     system("cls");
 
     switch (choice)
@@ -378,7 +382,7 @@ void leaderboards()
     		subject_ranking();
     		break;
     	default:
-    		cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
+    		std::cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
 	}
 }
 
@@ -387,18 +391,18 @@ void adviser()
 	int choice;
     start:
     system("cls");
-    cout<<"\n\n\n\n\t\t\t\t\t\t------------------------" << "\n";
-    cout<<"\t\t\t\t\t\t         STUDENT" << "\n";
-    cout<<"\t\t\t\t\t\t------------------------" << "\n\n";
-    cout<<"\t\t\t\t\t     1. Create A New Student Profile" << "\n";
-    cout<<"\t\t\t\t\t     2. Find Student's Records'" << "\n";
-    cout<<"\t\t\t\t\t     3. View Leaderboards" << "\n";
-    cout<<"\t\t\t\t\t     4. View Class Records" <<"\n";
-    cout<<"\t\t\t\t\t     5. Update Student's Record'"<<"\n";
-    cout<<"\t\t\t\t\t     6. Delete a Record" << "\n";
-    cout<<"\t\t\t\t\t     7. Main Menu" << "\n\n";
-    cout<<"\t\t\t\t\t\t         CHOICE: ";;
-    cin >> choice;
+    std::cout<<"\n\n\n\n\t\t\t\t\t\t------------------------" << "\n";
+    std::cout<<"\t\t\t\t\t\t         STUDENT" << "\n";
+    std::cout<<"\t\t\t\t\t\t------------------------" << "\n\n";
+    std::cout<<"\t\t\t\t\t     1. Create A New Student Profile" << "\n";
+    std::cout<<"\t\t\t\t\t     2. Find Student's Records'" << "\n";
+    std::cout<<"\t\t\t\t\t     3. View Leaderboards" << "\n";
+    std::cout<<"\t\t\t\t\t     4. View Class Records" <<"\n";
+    std::cout<<"\t\t\t\t\t     5. Update Student's Record'"<<"\n";
+    std::cout<<"\t\t\t\t\t     6. Delete a Record" << "\n";
+    std::cout<<"\t\t\t\t\t     7. Main Menu" << "\n\n";
+    std::cout<<"\t\t\t\t\t\t         CHOICE: ";;
+    std::cin >> choice;
     system("cls");
 
     switch (choice)
@@ -432,7 +436,7 @@ void adviser()
     		break;
 
     	default:
-    		cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
+    		std::cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
 	}
 	Sleep(1000);
 	goto start;
@@ -443,14 +447,14 @@ void student()
 	int choice;
     start:
     system("cls");
-    cout<<"\n\n\n\n\t\t\t\t\t\t------------------------"<<"\n";
-    cout<<"\t\t\t\t\t\t         STUDENT"<<"\n";
-    cout<<"\t\t\t\t\t\t------------------------"<<"\n\n";
-    cout<<"\t\t\t\t\t     1. View My Profile"<<"\n";
-    cout<<"\t\t\t\t\t     2. View Classroom Leaderboards"<<"\n";
-    cout<<"\t\t\t\t\t     3. Main Menu"<<"\n\n";
-    cout<<"\t\t\t\t\t\t         CHOICE: ";;
-    cin >> choice;
+    std::cout<<"\n\n\n\n\t\t\t\t\t\t------------------------"<<"\n";
+    std::cout<<"\t\t\t\t\t\t         STUDENT"<<"\n";
+    std::cout<<"\t\t\t\t\t\t------------------------"<<"\n\n";
+    std::cout<<"\t\t\t\t\t     1. View My Profile"<<"\n";
+    std::cout<<"\t\t\t\t\t     2. View Classroom Leaderboards"<<"\n";
+    std::cout<<"\t\t\t\t\t     3. Main Menu"<<"\n\n";
+    std::cout<<"\t\t\t\t\t\t         CHOICE: ";;
+    std::cin >> choice;
     system("cls");
 
     switch (choice)
@@ -468,7 +472,7 @@ void student()
     		break;
 
     	default:
-    		cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
+    		std::cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
 	}
 	Sleep(1000);
 	goto start;
@@ -492,30 +496,30 @@ void adviser_login()
 	adminread.open("admin_credentials.txt");
 	if (!adminread)
 	{
-		cout << "\n\n\n\n\n\n\n\t\t\t\t\t  System Error: User not Found\n\n\n";
+		std::cout << "\n\n\n\n\n\n\n\t\t\t\t\t  System Error: User not Found\n\n\n";
 		system("pause");
 		system("cls");
-		cout << "\n\n\n\n\n\n\n\t\t\t\t\t  Would you like to create one?(Y/N): ";
-		cin >> choice;
+		std::cout << "\n\n\n\n\n\n\n\t\t\t\t\t  Would you like to create one?(Y/N): ";
+		std::cin >> choice;
 		if (choice == 'Y'){
 
 			admincreate.open("master_pass.dat");
 
-			cout << "Enter the master password provided by the chief administrator \n";
-			cout << "Master Password: ";
-			cin >> master_pass;
+			std::cout << "Enter the master password provided by the chief administrator \n";
+			std::cout << "Master Password: ";
+			std::cin >> master_pass;
 
 			admincreate >> stored_master_pass;
 
 			if (master_pass == stored_master_pass){
 
 				system("cls");
-				cout << "\n\n\n\n\n\n\n\t\t\t\t\t  Select a username: ";
-				cin >> stored_username;
-				cin.ignore(20, '\n');
-				cout << "\n\n\n\n\t\t\t\t\t  Create a 6 digit password: ";
-				cin >> stored_password;
-				cin.ignore(20, '\n');
+				std::cout << "\n\n\n\n\n\n\n\t\t\t\t\t  Select a username: ";
+				std::cin >> stored_username;
+				std::cin.ignore(20, '\n');
+				std::cout << "\n\n\n\n\t\t\t\t\t  Create a 6 digit password: ";
+				std::cin >> stored_password;
+				std::cin.ignore(20, '\n');
 
 				adminwrite.open("admin_credentials.txt");
 				adminwrite << stored_username << " ";
@@ -523,7 +527,7 @@ void adviser_login()
 
 			} else {
 
-				cout << "\n Master Password incorrect. Administrator Account can not be created. \nContact the chief administrator immediately.";
+				std::cout << "\n Master Password incorrect. Administrator Account can not be created. \nContact the chief administrator immediately.";
 
 				exit(0);
 			}
@@ -533,21 +537,21 @@ void adviser_login()
 
 		}
 		else{
-			cout << "\nCan not Access Page without an Administrative Account.. Contact the chief administrator if this is a problem.";
+			std::cout << "\nCan not Access Page without an Administrative Account.. Contact the chief administrator if this is a problem.";
 			exit(0);
 		}
 	}
 	system("cls");
-	cout << "\n\n\n\n\n\n\n\t\t\t\tENTER USERNAME AND PASSWORD FOR ADMINISTRATIVE ACCESS";
-	cout << "\n\n\t\t\t\t\t\tUsername: ";
-	cin >> username;
+	std::cout << "\n\n\n\n\n\n\n\t\t\t\tENTER USERNAME AND PASSWORD FOR ADMINISTRATIVE ACCESS";
+	std::cout << "\n\n\t\t\t\t\t\tUsername: ";
+	std::cin >> username;
 	while(strcmp(username,stored_username))
 	{
 
 		adminread >> stored_username;
 		if(adminread.eof())
 		{
-			cout<<"\n\n\n\t\t\t\t\tThe username you entered is not registered. \n\n\t\t\t\t\tContact your system administrator if this is a problem" << std::endl;
+			std::cout<<"\n\n\n\t\t\t\t\tThe username you entered is not registered. \n\n\t\t\t\t\tContact your system administrator if this is a problem" << std::endl;
 			Sleep(3000);
 			main_menu();
     	}
@@ -556,16 +560,16 @@ void adviser_login()
 
 	start:
 	adminread >> stored_password;
-	cout << "\n\n\t\t\t\t\t\tPassword: ";
+	std::cout << "\n\n\t\t\t\t\t\tPassword: ";
 	for (int i = 0; i < 6; i++)
 	{
 		password[i] = getch();
-        cout<<"*";
+        std::cout<<"*";
 	}
 
 	if(strcmp(password, stored_password) == 0)
 	{
-    	cout<<"\n\n\t\t\t\t\t\tACCESS GRANTED"<< endl;
+    	std::cout<<"\n\n\t\t\t\t\t\tACCESS GRANTED"<< endl;
     	system("pause");
     	system("cls");
 		adviser();
@@ -574,12 +578,12 @@ void adviser_login()
 	{
 		if (counter == 2)
 		{
-			cout<<"\n\n\t\t\t\t\t\tACCESS DENIED"<<"\n\n\n\n\n\n\n\n";
+			std::cout<<"\n\n\t\t\t\t\t\tACCESS DENIED"<<"\n\n\n\n\n\n\n\n";
 			Sleep(500);
 			main_menu();
 		}
-		cout << "\n\n\t\t\t\t\t\tWrong password. "<<endl;
-    	cout << "\n\n\t\t\t\t\t\tTry Again";
+		std::cout << "\n\n\t\t\t\t\t\tWrong password. "<<endl;
+    	std::cout << "\n\n\t\t\t\t\t\tTry Again";
     	counter++;
     	Sleep(300);
     	system("cls");
@@ -594,20 +598,20 @@ void main_menu()
 	system("cls");
 	int choice;
 	start:
-	cout << "\t\t\t\t   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n";
-	cout << "\t\t\t\t |                                              |\n";
-	cout << "\t\t\t\t|             Student Management System          |\n";
-	cout << "\t\t\t\t |                                              |\n";
-	cout << "\t\t\t\t|                   Main Menu                  |\n";
-	cout << "\t\t\t\t |                                              |\n";
-	cout << "\t\t\t\t|                 1. Admin                     |\n";
-	cout << "\t\t\t\t |                                              |\n";
-	cout << "\t\t\t\t|                 2. Student                   |\n";
-	cout << "\t\t\t\t |                                              |\n";
-	cout << "\t\t\t\t|                 3. Exit                      |\n";
-	cout << "\t\t\t\t | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|";
-	cout << "\n\n\t\t\t\t\t" << "Choose an option, then press <Enter>: ";
-	cin >> choice;
+	std::cout << "\t\t\t\t   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n";
+	std::cout << "\t\t\t\t |                                              |\n";
+	std::cout << "\t\t\t\t|             Student Management System          |\n";
+	std::cout << "\t\t\t\t |                                              |\n";
+	std::cout << "\t\t\t\t|                   Main Menu                  |\n";
+	std::cout << "\t\t\t\t |                                              |\n";
+	std::cout << "\t\t\t\t|                 1. Admin                     |\n";
+	std::cout << "\t\t\t\t |                                              |\n";
+	std::cout << "\t\t\t\t|                 2. Student                   |\n";
+	std::cout << "\t\t\t\t |                                              |\n";
+	std::cout << "\t\t\t\t|                 3. Exit                      |\n";
+	std::cout << "\t\t\t\t | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|";
+	std::cout << "\n\n\t\t\t\t\t" << "Choose an option, then press <Enter>: ";
+	std::cin >> choice;
 
 	switch (choice)
     {
@@ -621,13 +625,13 @@ void main_menu()
 
     	case 3:
     		system("cls");
-    		cout << "\n\n\n\n\n\t\t\t\t      THANK YOU FOR USING OUR APP... GOODBYE!";
+    		std::cout << "\n\n\n\n\n\t\t\t\t      THANK YOU FOR USING OUR APP... GOODBYE!";
 			Sleep(2500);
 			exit(0);
 
     	default:
-    		cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
-    		cin.ignore(20, '\n');
+    		std::cout<<"\n\n\n\n\n\n\n\n\n\n\t\t\t     ERROR!! PLEASE TRY AGAIN!!\n\n\n\n\n\n\n\n";
+    		std::cin.ignore(20, '\n');
 	}
 	Sleep(1000);
 	goto start;
@@ -639,18 +643,18 @@ void display_all()
 	ifstream open("Record.txt");
 	if (!open)
 	{
-		cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
+		std::cout<<"\n\n\n\n\n\n\n\n\n\t\t\t\t\t    ERROR ! ! ! FILE NOT FOUND !\n\n\n\n\n\n\n\n\n\n";
 	}
 	else
 	{
-		cout << "\n\n\t\t\t\t\t  -------------------------------\n";
-		cout << "\t\t\t\t\t            CLASS RECORD\n";
-		cout << "\t\t\t\t\t  -------------------------------\n";
+		std::cout << "\n\n\t\t\t\t\t  -------------------------------\n";
+		std::cout << "\t\t\t\t\t            CLASS RECORD\n";
+		std::cout << "\t\t\t\t\t  -------------------------------\n";
 		while(open.read((char*)&a, sizeof(a)))
 		{
-			cout << "Record read successfully" << std::endl;
+			std::cout << "\n" <<;
 			a.disp_student_profiles();
-			cout << "\n\n\t\t\t\t\t  -------------------------------\n\n";
+			std::cout << "\n\n\t\t\t\t\t  -------------------------------\n\n";
 		}
 		system("pause");
 	}
